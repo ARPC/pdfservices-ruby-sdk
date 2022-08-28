@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/pdf_services_sdk/version"
+require_relative "lib/version"
 
 Gem::Specification.new do |spec|
   spec.name = "PdfServicesSdk"
