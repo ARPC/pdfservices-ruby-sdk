@@ -24,9 +24,14 @@ module PdfServicesSdk
         client_secret: credentials.client_secret,
         jwt_token: jwt
       }
-      res = HTTP.post(url, form: form)
-      response_json = JSON.parse(res.body.to_s)
-      response_json["access_token"]
+      response = HTTP.post(url, form: form)
+      if response.status == 200
+        response_json = JSON.parse(response.body.to_s)
+        response_json["access_token"]
+      else
+        error_description = JSON.parse(response.body.to_s).fetch("error_description", "unknown error")
+        raise RuntimeError, error_description
+      end
     end
   end
 end
