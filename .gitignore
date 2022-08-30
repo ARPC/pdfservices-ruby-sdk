@@ -9,3 +9,4 @@
 
 /integration_test_files/
 .DS_Store
+Gemfile.lock
