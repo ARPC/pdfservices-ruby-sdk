@@ -3,7 +3,7 @@
 require_relative "lib/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "PdfServicesSdk"
+  spec.name = "pdfservices"
   spec.version = PdfServicesSdk::VERSION
   spec.authors = ["Jimmy Bosse"]
   spec.email = ["jimmy.bosse@ankura.com"]
