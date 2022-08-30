@@ -17,9 +17,7 @@ module PdfServicesSdk
 
       def save_as_file(file_path)
         location = File.join(Dir.pwd, file_path)
-        File.open(location, "w") do |file|
-          file.write(@document)
-        end
+        File.write(location, @document)
       end
 
       def self.from_multipart_response(response)
@@ -32,34 +30,33 @@ module PdfServicesSdk
         end
       end
 
-      private
-        def self.parse_multipart(response)
-          content_type = response.headers.get("Content-Type").join(";")
-          boundary = MultipartParser::Reader::extract_boundary_value(content_type)
-          reader = MultipartParser::Reader.new(boundary)
-          body = response.body.to_s
+      private_class_method def self.parse_multipart(response)
+        content_type = response.headers.get("Content-Type").join(";")
+        boundary = MultipartParser::Reader.extract_boundary_value(content_type)
+        reader = MultipartParser::Reader.new(boundary)
+        body = response.body.to_s
 
-          result = { errors: [], parts: [] }
-          def result.part(name)
-            hash = self[:parts].detect { |h| h[:part].name == name }
-            [hash[:part], hash[:body].join]
-          end
-
-          reader.on_part do |part|
-            result[:parts] << thispart = {
-              part: part,
-              body: []
-            }
-            part.on_data do |chunk|
-              thispart[:body] << chunk
-            end
-          end
-          reader.on_error do |msg|
-            result[:errors] << msg
-          end
-          reader.write(body)
-          result
+        result = {errors: [], parts: []}
+        def result.part(name)
+          hash = self[:parts].detect { |h| h[:part].name == name }
+          [hash[:part], hash[:body].join]
         end
+
+        reader.on_part do |part|
+          result[:parts] << thispart = {
+            part: part,
+            body: []
+          }
+          part.on_data do |chunk|
+            thispart[:body] << chunk
+          end
+        end
+        reader.on_error do |msg|
+          result[:errors] << msg
+        end
+        reader.write(body)
+        result
+      end
     end
   end
 end

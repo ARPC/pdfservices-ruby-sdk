@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "minitest/autorun"
 require "webmock/minitest"
@@ -19,5 +20,5 @@ def file_fixture(file_name)
 end
 
 def valid_credentials
-  ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build()
+  ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
 end

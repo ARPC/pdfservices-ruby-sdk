@@ -7,51 +7,51 @@ class CredentialsBuildTest < Minitest::Test
   def test_it_is_empty_when_initialized
     builder = ::PdfServicesSdk::CredentialsBuilder.new
 
-    assert nil == builder.instance_variable_get(:@client_id)
-    assert nil == builder.instance_variable_get(:@client_secret)
-    assert nil == builder.instance_variable_get(:@organization_id)
-    assert nil == builder.instance_variable_get(:@account_id)
-    assert nil == builder.instance_variable_get(:@private_key)
+    assert builder.instance_variable_get(:@client_id).nil?
+    assert builder.instance_variable_get(:@client_secret).nil?
+    assert builder.instance_variable_get(:@organization_id).nil?
+    assert builder.instance_variable_get(:@account_id).nil?
+    assert builder.instance_variable_get(:@private_key).nil?
   end
 
   def test_with_client_id_sets_client_id
     builder = ::PdfServicesSdk::CredentialsBuilder.new.with_client_id("123someclientid")
 
-    assert "123someclientid" == builder.instance_variable_get(:@client_id)
+    assert builder.instance_variable_get(:@client_id) == "123someclientid"
   end
 
   def test_with_client_secret_sets_client_secret
     builder = ::PdfServicesSdk::CredentialsBuilder.new.with_client_secret("123someclientsecret")
 
-    assert "123someclientsecret" == builder.instance_variable_get(:@client_secret)
+    assert builder.instance_variable_get(:@client_secret) == "123someclientsecret"
   end
 
   def test_with_organization_id_sets_organization_id
     builder = ::PdfServicesSdk::CredentialsBuilder.new.with_organization_id("123someorganizationid")
 
-    assert "123someorganizationid" == builder.instance_variable_get(:@organization_id)
+    assert builder.instance_variable_get(:@organization_id) == "123someorganizationid"
   end
 
   def test_with_account_id_sets_account_id
     builder = ::PdfServicesSdk::CredentialsBuilder.new.with_account_id("123someaccountid")
 
-    assert "123someaccountid" == builder.instance_variable_get(:@account_id)
+    assert builder.instance_variable_get(:@account_id) == "123someaccountid"
   end
 
   def test_with_private_key_sets_private_key
     builder = ::PdfServicesSdk::CredentialsBuilder.new.with_private_key("123someprivatekey")
 
-    assert "123someprivatekey" == builder.instance_variable_get(:@private_key)
+    assert builder.instance_variable_get(:@private_key) == "123someprivatekey"
   end
 
   def test_from_file_sets_all_fields
     builder = ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json")
 
-    assert "123someclientid" == builder.instance_variable_get(:@client_id)
-    assert "123-somesecret!" == builder.instance_variable_get(:@client_secret)
-    assert "123@AdobeOrg" == builder.instance_variable_get(:@organization_id)
-    assert "456@techacct.adobe.com" == builder.instance_variable_get(:@account_id)
-    assert builder.instance_variable_get(:@private_key) != nil
+    assert builder.instance_variable_get(:@client_id) == "123someclientid"
+    assert builder.instance_variable_get(:@client_secret) == "123-somesecret!"
+    assert builder.instance_variable_get(:@organization_id) == "123@AdobeOrg"
+    assert builder.instance_variable_get(:@account_id) == "456@techacct.adobe.com"
+    assert !builder.instance_variable_get(:@private_key).nil?
   end
 
   def test_chaining_method
@@ -62,10 +62,10 @@ class CredentialsBuildTest < Minitest::Test
       .with_account_id("123someaccountid")
       .with_private_key("123someprivatekey")
 
-    assert "123someclientid" == builder.instance_variable_get(:@client_id)
-    assert "123someclientsecret" == builder.instance_variable_get(:@client_secret)
-    assert "123someorganizationid" == builder.instance_variable_get(:@organization_id)
-    assert "123someaccountid" == builder.instance_variable_get(:@account_id)
-    assert "123someprivatekey" == builder.instance_variable_get(:@private_key)
+    assert builder.instance_variable_get(:@client_id) == "123someclientid"
+    assert builder.instance_variable_get(:@client_secret) == "123someclientsecret"
+    assert builder.instance_variable_get(:@organization_id) == "123someorganizationid"
+    assert builder.instance_variable_get(:@account_id) == "123someaccountid"
+    assert builder.instance_variable_get(:@private_key) == "123someprivatekey"
   end
 end

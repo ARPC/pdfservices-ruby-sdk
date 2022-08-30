@@ -11,13 +11,13 @@ module PdfServicesSdk
 
     def self.get_jwt(credentials)
       payload = {
-        exp: Time.now.to_i + 3600,
-        iss: credentials.organization_id,
-        sub: credentials.account_id,
-        aud: "#{ROOT}c/#{credentials.client_id}",
+        :exp => Time.now.to_i + 3600,
+        :iss => credentials.organization_id,
+        :sub => credentials.account_id,
+        :aud => "#{ROOT}c/#{credentials.client_id}",
         SCOPE => true
       }
-      key =  OpenSSL::PKey::RSA.new(credentials.private_key)
+      key = OpenSSL::PKey::RSA.new(credentials.private_key)
       jwt = JWT.encode(payload, key, "RS256")
       url = ENDPOINT
       form = {
@@ -31,7 +31,7 @@ module PdfServicesSdk
         response_json["access_token"]
       else
         error_description = JSON.parse(response.body.to_s).fetch("error_description", "unknown error")
-        raise RuntimeError, error_description
+        raise error_description
       end
     end
   end

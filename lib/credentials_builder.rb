@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 require "json"
 require "credentials"
 
 module PdfServicesSdk
   class CredentialsBuilder
-    def initialize()
+    def initialize
       @client_id = nil
       @client_secret = nil
       @organization_id = nil
@@ -48,7 +49,7 @@ module PdfServicesSdk
       self
     end
 
-    def build()
+    def build
       ::PdfServicesSdk::Credentials.new(
         client_id: @client_id,
         client_secret: @client_secret,

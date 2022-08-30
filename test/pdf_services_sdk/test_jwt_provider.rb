@@ -4,7 +4,6 @@ require "http"
 require "jwt_provider"
 
 class JwtProviderTest < Minitest::Test
-
   def test_it_returns_a_jwt_token
     stub_valid_response
     jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
@@ -20,19 +19,20 @@ class JwtProviderTest < Minitest::Test
   end
 
   private
-    def stub_jwt_request
-      stub_request(:post, "https://ims-na1.adobelogin.com/ims/exchange/jwt/")
-    end
 
-    def stub_valid_response
-      stub_jwt_request.to_return(status: 200, body: json_fixture("valid_jwt_response"))
-    end
+  def stub_jwt_request
+    stub_request(:post, "https://ims-na1.adobelogin.com/ims/exchange/jwt/")
+  end
 
-    def stub_invalid_response
-      stub_jwt_request.to_return(status: 400, body: json_fixture("invalid_jwt_response"))
-    end
+  def stub_valid_response
+    stub_jwt_request.to_return(status: 200, body: json_fixture("valid_jwt_response"))
+  end
 
-    def valid_credentials
-      ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build()
-    end
+  def stub_invalid_response
+    stub_jwt_request.to_return(status: 400, body: json_fixture("invalid_jwt_response"))
+  end
+
+  def valid_credentials
+    ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
+  end
 end
