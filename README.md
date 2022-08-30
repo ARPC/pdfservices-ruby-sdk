@@ -1,22 +1,45 @@
-# Pdfservices::Ruby::Sdk
+# PDF Services SDK for Ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pdfservices/ruby/sdk`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+An Adobe PDF Services Ruby SDK provides APIs for creating, combining, exporting and manipulating PDFs.
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+To use the gem in your project Gemfile:
+1. Generate an OAuth token for GitHub
+```terminal
+curl -u 'username' -d '{"scopes":["repo"],"note":"Gemfile Token"}' https://api.github.com/authorizations
+```
 
-    $ bundle add pdfservices-ruby-sdk
+2. Add the token as an environment variable:
+```terminal
+$ export GITHUB_TOKEN=your_token
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install pdfservices-ruby-sdk
+3. Add the gem to your gemfile:
+```terminal
+gem "pdfservices", git: "https://#{ENV['GITHUB_TOKEN']}:x-oauth-basic@github.com/arpc/pdfservices-ruby-sdk.git'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+In order to user this SDK, you will need to register for and Adobe developer account which will result in you recieving a private key.
+Then you need to create a json file with your credentials:
+```json
+{
+  "client_credentials": {
+    "client_id": "123someclientid",
+    "client_secret": "123-somesecret!"
+  },
+  "service_account_credentials": {
+    "organization_id": "123@AdobeOrg",
+    "account_id": "456@techacct.adobe.com",
+    "private_key_file": "path-tp-your/private.key"
+  }
+}
+
+```
+
+Right now the only supported API is document merge. See `test/pdf_services_sdk/test_integration.rb` for an example usage.
 
 ## Development
 
@@ -34,4 +57,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Pdfservices::Ruby::Sdk project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/pdfservices-ruby-sdk/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Pdf Services SDK for Ruby project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/pdfservices-ruby-sdk/blob/main/CODE_OF_CONDUCT.md).
