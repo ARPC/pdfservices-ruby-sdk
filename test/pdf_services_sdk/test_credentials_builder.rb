@@ -51,7 +51,7 @@ class CredentialsBuildTest < Minitest::Test
     assert "123-somesecret!" == builder.instance_variable_get(:@client_secret)
     assert "123@AdobeOrg" == builder.instance_variable_get(:@organization_id)
     assert "456@techacct.adobe.com" == builder.instance_variable_get(:@account_id)
-    assert "-----BEGIN RSA PRIVATE KEY-----\nthiskeyisgarbage\n-----END RSA PRIVATE KEY-----\n" == builder.instance_variable_get(:@private_key)
+    assert builder.instance_variable_get(:@private_key) != nil
   end
 
   def test_chaining_method
