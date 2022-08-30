@@ -1,0 +1,25 @@
+{
+  "cpf:status": {
+    "completed": false,
+    "type": "",
+    "title": "In Progress",
+    "status": 202
+  },
+  "cpf:engine": {
+    "repo:assetId": "urn:aaid:cpf:Service-52d5db6097ed436ebb96f13a4c7bf8fb"
+  },
+  "cpf:inputs": {
+    "documentIn": {
+      "dc:format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "cpf:location": "InputFile0"
+    },
+    "params": {
+      "cpf:inline": {
+        "outputFormat": "pdf",
+        "jsonDataForMerge": {
+          "message": "World"
+        }
+      }
+    }
+  }
+}

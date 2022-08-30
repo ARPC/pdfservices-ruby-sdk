@@ -1,0 +1,4 @@
+{
+  "error_description": "The JWT subject is invalid",
+  "error": "invalid_token"
+}

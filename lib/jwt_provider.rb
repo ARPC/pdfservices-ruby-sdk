@@ -1,6 +1,7 @@
 require "jwt"
 require "http"
 require "json"
+require "yaml"
 
 module PdfServicesSdk
   class JwtProvider

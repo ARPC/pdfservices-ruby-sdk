@@ -23,7 +23,6 @@ module PdfServicesSdk
       end
 
       def self.from_multipart_response(response)
-        puts "parsing response..."
         parts = parse_multipart(response)[:parts]
         if parts.length == 2
           document = parts[1][:body].join
@@ -47,7 +46,6 @@ module PdfServicesSdk
           end
 
           reader.on_part do |part|
-            puts "on_part"
             result[:parts] << thispart = {
               part: part,
               body: []
@@ -57,7 +55,6 @@ module PdfServicesSdk
             end
           end
           reader.on_error do |msg|
-            puts "on_error: #{msg}"
             result[:errors] << msg
           end
           reader.write(body)

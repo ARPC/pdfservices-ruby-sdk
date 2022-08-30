@@ -1,52 +1,59 @@
 require "test_helper"
 require "json"
 require "credentials_builder"
-require "execution_context"
-require "file_ref"
 require "document_merge/operation"
-require "document_merge/options/document_merge_options"
-require "document_merge/options/output_format"
 
 class IntegrationTest < Minitest::Test
 
   def test_it_works
-    # Initial setup, create credentials instance.
-    credentials = ::PdfServicesSdk::CredentialsBuilder.new.from_file("integration_test_files/pdfservices-api-credentials.json").build()
+    stub_valid_response_sequence
 
-    # Setup input data for the document merge process
-    json_string = File.read("integration_test_files/sample_claim.json")
+    # Initial setup, create credentials instance.
+    credentials = valid_credentials
+
+    # Data for the document merge process
+    json_string = file_fixture("sample_data.json")
     json_data_for_merge = JSON.parse(json_string)
 
-    # Create an ExecutionContext using credentials
-    execution_context = ::PdfServicesSdk::ExecutionContext.new(credentials)
+    # template source file
+    template_path = File.join(Dir.pwd, "test", "fixtures", "files", "sample_template.docx")
 
-    # Create a new DocumentMerge options instance
-    document_merge = ::PdfServicesSdk::DocumentMerge
-    document_merge_options = document_merge::Options
-    options = document_merge_options::DocumentMergeOptions.new(json_data_for_merge, document_merge_options::OutputFormat::PDF)
+    operation = ::PdfServicesSdk::DocumentMerge::Operation.new(
+      credentials,
+      template_path,
+      json_data_for_merge,
+      :pdf
+    )
+    # Execute the operation
+    result = operation.execute()
 
-    # Create a new operation instance using the options instance
-    document_merge_operation = document_merge::Operation.new(options)
-
-    # Set operation input document template from a source file
-    input = ::PdfServicesSdk::FileRef.create_from_file("integration_test_files/claim_template.docx")
-    document_merge_operation.set_input(input)
-
-    # Execute the operation and Save the result to the specified location
-    document_merge_operation.execute(execution_context) do |result|
-      if result.success?
-        result.save_as_file("integration_test_files/output.pdf")
-      else
-        error = result.error
-        # if error.is_a?(::PdfServicesSdk::Error::ServiceApiError) || error.is_a?(::PdfServicesSdk::Error::ServiceUsageError)
-        #   puts "Exception encountered while executing operation"
-        #   puts error
-        # else
-          puts "Exception encountered while executing operation"
-          puts error
-        # end
-      end
-    end
+    assert result.success?
   end
 
+  private
+
+    def stub_valid_response_sequence
+      stub_request(:post, "https://ims-na1.adobelogin.com/ims/exchange/jwt/")
+        .to_return(status: 200, body: json_fixture("valid_jwt_response"))
+
+      stub_request(:post, "https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22:%20%22http://ns.adobe.com/rel/primary%22%7D")
+        .to_return(
+          status: 202,
+          headers: { "Location" => "https://cpf-ue1.adobe.io/ops/id/some-document-token" }.merge(json_headers),
+          body: json_fixture("merge_request_in_progress")
+        )
+
+      stub_request(:get, "https://cpf-ue1.adobe.io/ops/id/some-document-token")
+        .to_return(status: 202, headers: json_headers, body: json_fixture("merge_request_in_progress"))
+        .to_return(status: 202, headers: json_headers, body: json_fixture("merge_request_in_progress"))
+        .to_return(status: 200, headers: multipart_headers, body: multipart_fixture("merge_request_response"))
+    end
+
+    def json_headers
+      { "Content-Type" => "application/json;charset=UTF-8" }
+    end
+
+    def multipart_headers
+      { "Content-Type" => "multipart/mixed; boundary=Boundary_962026_575353369_1661875317362;charset=UTF-8" }
+    end
 end

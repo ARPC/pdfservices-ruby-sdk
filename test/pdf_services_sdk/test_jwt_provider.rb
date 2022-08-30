@@ -4,49 +4,32 @@ require "http"
 require "jwt_provider"
 
 class JwtProviderTest < Minitest::Test
+
   def test_it_returns_a_jwt_token
-    HTTP.stub :post, valid_response do
-      jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
-      assert_equal "fake1.fake2.fake3", jwt
-    end
+    stub_valid_response
+    jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
+    assert_equal "fake1.fake2.fake3", jwt
   end
 
   def test_it_raises_an_error_if_other_than_200
+    stub_invalid_response
     error = assert_raises RuntimeError do
-      HTTP.stub :post, invalid_response do
-        _jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
-      end
+      _jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
     end
     assert_equal "The JWT subject is invalid", error.message
   end
 
   private
-    def valid_response
-      ::HTTP::Response.new({
-        status: 200,
-        version: "1.1",
-        headers: {},
-        encoding: "UTF-8",
-        body: "{\"token_type\":\"bearer\",\"access_token\":\"fake1.fake2.fake3\",\"expires_in\":86399998}",
-        request: ::HTTP::Request.new({
-          verb: :post,
-          uri: ::PdfServicesSdk::JwtProvider::ENDPOINT
-        })
-      })
+    def stub_jwt_request
+      stub_request(:post, "https://ims-na1.adobelogin.com/ims/exchange/jwt/")
     end
 
-    def invalid_response
-      ::HTTP::Response.new({
-        status: 400,
-        version: "1.1",
-        headers: {},
-        encoding: "UTF-8",
-        body: "{\"error_description\":\"The JWT subject is invalid\",\"error\":\"invalid_token\"}",
-        request: ::HTTP::Request.new({
-          verb: :post,
-          uri: ::PdfServicesSdk::JwtProvider::ENDPOINT
-        })
-      })
+    def stub_valid_response
+      stub_jwt_request.to_return(status: 200, body: json_fixture("valid_jwt_response"))
+    end
+
+    def stub_invalid_response
+      stub_jwt_request.to_return(status: 400, body: json_fixture("invalid_jwt_response"))
     end
 
     def valid_credentials
