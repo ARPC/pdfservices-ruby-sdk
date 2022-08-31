@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "http"
-require "jwt_provider"
+require "pdfservices/jwt_provider"
 require "pdfservices/document_merge/result"
 require "yaml"
 
