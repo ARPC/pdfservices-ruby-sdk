@@ -6,18 +6,14 @@ An Adobe PDF Services Ruby SDK provides APIs for creating, combining, exporting 
 
 To use the gem in your project Gemfile:
 1. Generate an OAuth token for GitHub
-```terminal
-curl -u 'username' -d '{"scopes":["repo"],"note":"Gemfile Token"}' https://api.github.com/authorizations
-```
-
 2. Add the token as an environment variable:
 ```terminal
-$ export GITHUB_TOKEN=your_token
+$ export BUNDLE_GITHUB__COM=your_token
 ```
 
 3. Add the gem to your gemfile:
 ```terminal
-gem "pdfservices", git: "https://#{ENV['GITHUB_TOKEN']}:x-oauth-basic@github.com/arpc/pdfservices-ruby-sdk.git'
+gem "pdfservices", git: "https://github.com/arpc/pdfservices-ruby-sdk.git'
 ```
 
 ## Usage
