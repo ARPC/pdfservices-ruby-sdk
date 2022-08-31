@@ -3,6 +3,7 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "minitest/autorun"
 require "webmock/minitest"
+require "pdfservices"
 
 def json_fixture(name)
   path = File.join(Dir.pwd, "test", "fixtures", "#{name}.json")
@@ -20,5 +21,5 @@ def file_fixture(file_name)
 end
 
 def valid_credentials
-  ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
+  ::PdfServices::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
 end

@@ -1,19 +1,18 @@
+# frozen_string_literal: true
+
 require "test_helper"
-require "credentials_builder"
-require "http"
-require "jwt_provider"
 
 class JwtProviderTest < Minitest::Test
   def test_it_returns_a_jwt_token
     stub_valid_response
-    jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
+    jwt = ::PdfServices::JwtProvider.get_jwt(valid_credentials)
     assert_equal "fake1.fake2.fake3", jwt
   end
 
   def test_it_raises_an_error_if_other_than_200
     stub_invalid_response
     error = assert_raises RuntimeError do
-      _jwt = ::PdfServicesSdk::JwtProvider.get_jwt(valid_credentials)
+      _jwt = ::PdfServices::JwtProvider.get_jwt(valid_credentials)
     end
     assert_equal "The JWT subject is invalid", error.message
   end
@@ -33,6 +32,6 @@ class JwtProviderTest < Minitest::Test
   end
 
   def valid_credentials
-    ::PdfServicesSdk::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
+    ::PdfServices::CredentialsBuilder.new.from_file("test/fixtures/files/pdfservices-api-credentials.json").build
   end
 end

@@ -1,13 +1,15 @@
-require "jwt"
+# frozen_string_literal: true
+
 require "http"
 require "json"
+require "jwt"
 require "yaml"
 
-module PdfServicesSdk
+module PdfServices
   class JwtProvider
-    ROOT = "https://ims-na1.adobelogin.com/".freeze
-    ENDPOINT = "#{ROOT}ims/exchange/jwt/".freeze
-    SCOPE = "#{ROOT}s/ent_documentcloud_sdk".freeze
+    ROOT = "https://ims-na1.adobelogin.com/"
+    ENDPOINT = "#{ROOT}ims/exchange/jwt/"
+    SCOPE = "#{ROOT}s/ent_documentcloud_sdk"
 
     def self.get_jwt(credentials)
       payload = {

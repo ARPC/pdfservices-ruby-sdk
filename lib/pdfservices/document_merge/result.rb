@@ -1,7 +1,7 @@
-require "multipart_parser/reader"
 require "json"
+require "multipart_parser/reader"
 
-module PdfServicesSdk
+module PdfServices
   module DocumentMerge
     class Result
       attr_accessor :document, :error

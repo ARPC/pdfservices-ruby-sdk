@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "jwt_provider"
 require "http"
-require "document_merge/result"
+require "jwt_provider"
+require "pdfservices/document_merge/result"
 require "yaml"
 
-module PdfServicesSdk
+module PdfServices
   module DocumentMerge
     class Operation
       ENDPOINT = "https://cpf-ue1.adobe.io/ops/:create?respondWith=%7B%22reltype%22%3A%20%22http%3A%2F%2Fns.adobe.com%2Frel%2Fprimary%22%7D"

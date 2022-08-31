@@ -2,7 +2,7 @@
 
 require "json"
 
-module PdfServicesSdk
+module PdfServices
   class Credentials
     attr_accessor :client_id, :client_secret, :organization_id, :account_id, :private_key
 

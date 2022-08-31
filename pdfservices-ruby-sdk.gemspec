@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/version"
+require_relative "lib/pdfservices/version"
 
 Gem::Specification.new do |spec|
   spec.name = "pdfservices"
-  spec.version = PdfServicesSdk::VERSION
+  spec.version = PdfServices::VERSION
   spec.authors = ["Jimmy Bosse"]
   spec.email = ["jimmy.bosse@ankura.com"]
 
@@ -31,6 +31,10 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "json", "~> 2.6"
+  spec.add_dependency "jwt", "~> 2.5"
+  spec.add_dependency "http", "~> 5.1"
+  spec.add_dependency "multipart-parser", "~> 0.1"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

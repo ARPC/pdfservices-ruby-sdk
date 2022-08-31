@@ -1,7 +1,6 @@
+# frozen_string_literal: true
+
 require "test_helper"
-require "json"
-require "credentials_builder"
-require "document_merge/operation"
 
 class IntegrationTest < Minitest::Test
   def test_it_works
@@ -17,7 +16,7 @@ class IntegrationTest < Minitest::Test
     # template source file
     template_path = File.join(Dir.pwd, "test", "fixtures", "files", "sample_template.docx")
 
-    operation = ::PdfServicesSdk::DocumentMerge::Operation.new(
+    operation = ::PdfServices::DocumentMerge::Operation.new(
       credentials,
       template_path,
       json_data_for_merge,
