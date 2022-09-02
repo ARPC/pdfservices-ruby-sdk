@@ -4,7 +4,7 @@ PATH
     pdfservices (0.1.1)
       http (~> 5.1)
       json (~> 2.6)
-      jwt (~> 2.5)
+      jwt (>= 1.0, < 3.0)
       multipart-parser (~> 0.1)
 
 GEM
@@ -75,6 +75,8 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
+  arm64-darwin-21
 
 DEPENDENCIES
   minitest (~> 5.0)
