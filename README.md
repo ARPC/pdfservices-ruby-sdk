@@ -36,7 +36,7 @@ Then you need to create a json file with your credentials:
 ```
 ### Supported API calls:
 
-- Document merge. See `test/pdf_services_sdk/test_integration.rb` for an example usage.
+- Document merge. See `test/pdf_services_sdk/test_document_merge.rb` for an example usage.
 - OCR. See `test/pdf_services_sdk/test_ocr.rb` for an example usage.
 
 ## Development
