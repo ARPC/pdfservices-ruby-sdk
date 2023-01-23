@@ -72,7 +72,7 @@ class OcrTest < Minitest::Test
 
   def secured_headers
     {
-      "Authorization": "Bearer fake1.fake2.fake3",
+      Authorization: "Bearer fake1.fake2.fake3",
       "Content-Type": "application/json",
       "X-Api-Key": "123someclientid"
     }
