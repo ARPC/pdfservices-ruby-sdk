@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class IntegrationTest < Minitest::Test
+class DocumentMergeTest < Minitest::Test
   def test_it_works
     stub_valid_response_sequence
 

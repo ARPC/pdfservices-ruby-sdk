@@ -34,8 +34,10 @@ Then you need to create a json file with your credentials:
 }
 
 ```
+### Supported API calls:
 
-Right now the only supported API is document merge. See `test/pdf_services_sdk/test_integration.rb` for an example usage.
+- Document merge. See `test/pdf_services_sdk/test_integration.rb` for an example usage.
+- OCR. See `test/pdf_services_sdk/test_ocr.rb` for an example usage.
 
 ## Development
 
