@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdfservices (0.1.1)
+    pdfservices (0.1.2)
       http (~> 5.1)
       json (~> 2.6)
       jwt (>= 1.0, < 3.0)
@@ -22,7 +22,7 @@ GEM
       ffi (>= 1.0.0)
       rake
     hashdiff (1.0.1)
-    http (5.1.0)
+    http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -31,7 +31,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     json (2.6.2)
-    jwt (2.5.0)
+    jwt (2.6.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -74,9 +74,9 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
+  arm64-darwin-21
   ruby
   x86_64-linux
-  arm64-darwin-21
 
 DEPENDENCIES
   minitest (~> 5.0)

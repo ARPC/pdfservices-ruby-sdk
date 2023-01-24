@@ -1,0 +1,7 @@
+{
+  "status": "done",
+  "asset": {
+    "assetID": "ocr'd:asset-id",
+    "downloadUri": "https://ocr.file.url"
+  }
+}
