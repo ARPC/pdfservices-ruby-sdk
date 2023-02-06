@@ -1,0 +1,7 @@
+{
+  "status": "done",
+  "asset": {
+    "assetID": "merged:asset-id",
+    "downloadUri": "https://documentmerge.file.url"
+  }
+}
