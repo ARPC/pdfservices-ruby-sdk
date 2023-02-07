@@ -93,6 +93,3 @@ class DocumentMergeTest < Minitest::Test
     {"Content-Type" => "application/pdf"}
   end
 end
-
-#stub_request(:post, "https://pdf-services.adobe.io/assets").
-#stub_request(:post, "https://pdf-services.adobe.io/assets").
