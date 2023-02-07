@@ -10,11 +10,11 @@ credentials = ::PdfServices::CredentialsBuilder.new
   .with_private_key(ENV["PDF_SERVICES_PRIVATE_KEY"])
   .build
 
-json = { message: "World"}
+json = {message: "World"}
 word_file = File.join(Dir.pwd, "test", "fixtures", "files", "sample_template.docx")
 operation = ::PdfServices::DocumentMerge::Operation.new(credentials, word_file, json, "pdf")
 
-result = operation.execute()
+result = operation.execute
 
 puts(result.error)
 
