@@ -14,11 +14,11 @@ class HtmlToPdfTest < Minitest::Test
     json_data_for_merge = JSON.parse(json_string)
 
     # template source file
-    template_path = File.join(Dir.pwd, "test", "fixtures", "files", "sample.zip")
+    zip_file_path = File.join(Dir.pwd, "test", "fixtures", "files", "sample.zip")
 
     operation = ::PdfServices::HtmlToPdf::Operation.new(
       credentials,
-      template_path,
+      zip_file_path,
       json_data_for_merge,
       :pdf
     )
