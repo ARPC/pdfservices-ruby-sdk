@@ -21,4 +21,9 @@ module PdfServices
     autoload :Operation, "pdfservices/ocr/operation"
     autoload :Result, "pdfservices/ocr/result"
   end
+
+  module HtmlToPdf
+    autoload :Operation, "pdfservices/html_to_pdf/operation"
+    autoload :Result, "pdfservices/html_to_pdf/result"
+  end
 end

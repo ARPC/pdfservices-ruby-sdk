@@ -1,0 +1,7 @@
+{
+  "status": "done",
+  "asset": {
+    "assetID": "html_to_pdf:asset-id",
+    "downloadUri": "https://htmltopdf.file.url"
+  }
+}
