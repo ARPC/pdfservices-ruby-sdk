@@ -27,7 +27,6 @@ class HtmlToPdfTest < Minitest::Test
     assert result.success?
   end
 
-
   private
 
   def stub_valid_response_sequence
