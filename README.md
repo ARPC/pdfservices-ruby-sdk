@@ -39,8 +39,9 @@ Then you need to create a json file with your credentials:
 - Document merge. See `test/pdf_services_sdk/test_document_merge.rb` for an example usage.
 - OCR. See `test/pdf_services_sdk/test_ocr.rb` for an example usage.
 
-- Html to Pdf. See `test/pdf_services_sdk/test_html_to_pdf.rb` for an example usage. zip file should contain the html file and any other assets
-html file must contain the following line...
+- Html to Pdf. See `test/pdf_services_sdk/test_html_to_pdf.rb` for an example usage.
+  - zip file should contain a file named `index.html` and any other referenced assets
+  - index.html must contain the following line...
 ```<script src='./json.js' type='text/javascript'></script>```
 
 ## Development
