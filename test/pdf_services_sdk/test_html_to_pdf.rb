@@ -19,8 +19,7 @@ class HtmlToPdfTest < Minitest::Test
     operation = ::PdfServices::HtmlToPdf::Operation.new(
       credentials,
       zip_file_path,
-      json_data_for_merge,
-      :pdf
+      json_data_for_merge
     )
     # Execute the operation
     result = operation.execute

@@ -12,11 +12,10 @@ module PdfServices
       OPERATION_ENDPOINT = "https://pdf-services.adobe.io/operation/htmltopdf"
       ASSETS_ENDPOINT = "https://pdf-services.adobe.io/assets"
 
-      def initialize(credentials = nil, zip_file_path = nil, json_data_for_merge = nil, output_format = nil)
+      def initialize(credentials = nil, zip_file_path = nil, json_data_for_merge = nil)
         @credentials = credentials
         @zip_file_path = zip_file_path
         @json_data_for_merge = json_data_for_merge
-        @output_format = output_format
       end
 
       def get_presigned_url
@@ -49,8 +48,9 @@ module PdfServices
         asset_id = upload_asset(@zip_file_path)
         response = api.post(OPERATION_ENDPOINT, json: {
           assetID: asset_id,
-          outputFormat: @output_format,
-          jsonDataForMerge: @json_data_for_merge
+          json: @json_data_for_merge&.to_json,
+          pageLayout: {pageWidth: 8.5, pageHeight: 11},
+          includeHeaderFooter: false
         })
         if response.status == 201
           document_url = response.headers["location"]
