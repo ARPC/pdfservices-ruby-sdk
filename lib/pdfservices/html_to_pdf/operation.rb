@@ -49,7 +49,7 @@ module PdfServices
         response = api.post(OPERATION_ENDPOINT, json: {
           assetID: asset_id,
           json: @json_data_for_merge&.to_json,
-          pageLayout: {pageWidth: 8.5, pageHeight: 11}.to_json,
+          pageLayout: {pageWidth: 8.5, pageHeight: 11},
           includeHeaderFooter: false
         })
         if response.status == 201
