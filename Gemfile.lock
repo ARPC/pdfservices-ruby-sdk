@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdfservices (0.2.1)
+    pdfservices (0.2.2)
       http (~> 5.1)
       json (~> 2.6)
       jwt (>= 1.0, < 3.0)
