@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pdfservices (0.2.2)
+    pdfservices (0.3.0)
       http (~> 5.1)
       json (~> 2.6)
       multipart-parser (~> 0.1)
@@ -103,4 +103,4 @@ DEPENDENCIES
   webmock (~> 3.18)
 
 BUNDLED WITH
-   2.4.10
+  4.0.19
