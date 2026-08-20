@@ -2,7 +2,6 @@
 
 require "http"
 require "json"
-require "jwt"
 require "multipart_parser/reader"
 require "yaml"
 require "pdfservices/version"
@@ -10,7 +9,7 @@ require "pdfservices/version"
 module PdfServices
   autoload :CredentialsBuilder, "pdfservices/credentials_builder"
   autoload :Credentials, "pdfservices/credentials"
-  autoload :JwtProvider, "pdfservices/jwt_provider"
+  autoload :OauthProvider, "pdfservices/oauth_provider"
 
   module DocumentMerge
     autoload :Operation, "pdfservices/document_merge/operation"

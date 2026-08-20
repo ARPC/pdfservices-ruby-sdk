@@ -12,9 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "An Adobe PDF Services Ruby SDK provides APIs for creating, combining, exporting and manipulating PDFs."
   spec.homepage = "https://github.com/ARPC/PdfServices-ruby-sdk/blob/main/README.md"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  spec.required_ruby_version = ">= 3.3.4"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/ARPC/PdfServices-ruby-sdk"
@@ -32,7 +30,6 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_dependency "json", "~> 2.6"
-  spec.add_dependency "jwt", [">= 1.0", "< 3.0"]
   spec.add_dependency "http", "~> 5.1"
   spec.add_dependency "multipart-parser", "~> 0.1"
 

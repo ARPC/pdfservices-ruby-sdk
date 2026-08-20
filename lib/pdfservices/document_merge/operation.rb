@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "http"
-require "pdfservices/jwt_provider"
+require "pdfservices/oauth_provider"
 require "pdfservices/document_merge/result"
 require "yaml"
 
@@ -64,7 +64,7 @@ module PdfServices
 
       def api_headers
         {
-          Authorization: "Bearer #{JwtProvider.get_jwt(@credentials)}",
+          Authorization: "Bearer #{OauthProvider.get_token(@credentials)}",
           "x-api-key": @credentials.client_id,
           "Content-Type": "application/json"
         }
