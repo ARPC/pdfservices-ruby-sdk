@@ -4,7 +4,6 @@ PATH
     pdfservices (0.2.2)
       http (~> 5.1)
       json (~> 2.6)
-      jwt (>= 1.0, < 3.0)
       multipart-parser (~> 0.1)
 
 GEM
@@ -13,7 +12,6 @@ GEM
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
-    base64 (0.3.0)
     bigdecimal (4.1.2)
     crack (1.0.1)
       bigdecimal
@@ -35,8 +33,6 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     json (2.21.2)
-    jwt (2.10.3)
-      base64
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
     llhttp-ffi (0.5.1)

@@ -24,9 +24,9 @@ class OcrTest < Minitest::Test
   private
 
   def stub_valid_response_sequence
-    # get JWT for requests
-    stub_request(:post, "https://ims-na1.adobelogin.com/ims/exchange/jwt/")
-      .to_return(status: 200, body: json_fixture("valid_jwt_response"))
+    # get OAuth token for requests
+    stub_request(:post, "https://ims-na1.adobelogin.com/ims/token/v3")
+      .to_return(status: 200, body: json_fixture("valid_oauth_response"))
 
     # get a presigned url to upload the source pdf
     stub_request(:post, "https://pdf-services.adobe.io/assets")
