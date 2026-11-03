@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     pdfservices (0.4.3)
-      http (~> 5.3.0)
+      http (>= 5.3, < 6.1)
       json (~> 3.1.0)
       multipart-parser (~> 0.1.0)
 
@@ -17,27 +17,16 @@ GEM
       bigdecimal
       rexml
     domain_name (0.7.20261031)
-    ffi (1.17.4)
-    ffi (1.17.4-arm64-darwin)
-    ffi (1.17.4-x86_64-linux-gnu)
-    ffi-compiler (1.4.3)
-      ffi (>= 1.15.5)
-      rake
     hashdiff (1.2.1)
-    http (5.3.1)
-      addressable (~> 2.8)
+    http (6.0.4)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
+      llhttp (~> 0.6.1)
     http-cookie (1.1.6)
       domain_name (~> 0.5)
-    http-form_data (2.3.0)
     json (3.1.0)
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
-    llhttp-ffi (0.5.1)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
+    llhttp (0.6.2)
     minitest (5.27.0)
     multipart-parser (0.1.1)
     parallel (2.3.0)
@@ -96,7 +85,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  http (~> 5.3.0)
+  http (~> 6.0.4)
   json (~> 3.1.0)
   minitest (~> 5.0)
   multipart-parser (~> 0.1.0)

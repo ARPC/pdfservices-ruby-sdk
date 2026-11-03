@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_dependency "json", "~> 3.1.0"
-  spec.add_dependency "http", "~> 5.3.0"
+  spec.add_dependency "http", ">= 5.3", "< 6.1"
   spec.add_dependency "multipart-parser", "~> 0.1.0"
 
   # For more information and examples about making a new gem, check out our
