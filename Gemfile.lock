@@ -17,6 +17,7 @@ GEM
       bigdecimal
       rexml
     domain_name (0.7.20261031)
+    drb (2.2.3)
     ffi (1.17.4)
     ffi (1.17.4-arm64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
@@ -38,7 +39,9 @@ GEM
     llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    minitest (5.27.0)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
     multipart-parser (0.1.1)
     parallel (2.3.0)
     parser (3.3.13.0)
@@ -98,7 +101,7 @@ PLATFORMS
 DEPENDENCIES
   http (~> 5.3.0)
   json (~> 3.1.0)
-  minitest (~> 5.0)
+  minitest (~> 6.0)
   multipart-parser (~> 0.1.0)
   pdfservices!
   rake (~> 13.0)
