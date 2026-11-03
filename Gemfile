@@ -11,7 +11,6 @@ gem "standard", "~> 1.3"
 gem "rexml", "~> 3.4"
 gem "json", "~> 3.1"
 
-
 group :test do
   gem "webmock", "~> 3.18"
 end
