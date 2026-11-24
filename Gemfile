@@ -14,5 +14,5 @@ gem "http", "~> 5.3.0"
 gem "multipart-parser", "~> 0.1.0"
 
 group :test do
-  gem "webmock", "~> 3.18"
+  gem "webmock", "~> 3.36"
 end
